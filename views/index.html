@@ -2,8 +2,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
 	var connectionPort = process.env.PORT || 5000;
-	//var socket = io.connect('http://localhost:'+connectionPort);
-	var socket = io.connect(window.location.hostname);
+	var socket = io.connect('http://localhost:'+connectionPort);
+	//var socket = io.connect(window.location.hostname);
 
 	// on connection to server, ask for user's name with an anonymous callback
 	socket.on('connect', function(){

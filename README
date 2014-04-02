@@ -1,0 +1,16 @@
+#Overview
+Uses Node.js, socket.io, and Parse (parse.com) to allow for data visualization. Framework is that pinging the main page will update main page view for all clients connected with the latest data from the Parse database.
+
+
+##Installation
+
+1. npm install
+2. PORT=xxxx node app.js
+
+
+##Proof-of-Concept
+
+1. Open one tab on browser and navigate to localhost:xxxx
+2. Update database with new entries
+3. Ping localhost:xxxx
+4. That tab used in step 1 should now be updated

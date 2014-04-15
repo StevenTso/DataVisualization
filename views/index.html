@@ -1,6 +1,14 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
+/* Visualization stuff
+ */
+var handshake_one;
+var handshake_two;
+var userID_one;
+var handshake_match;
+
+
 	var socket = io.connect();
 
 	//step 1 (when you connect to page)
@@ -10,11 +18,25 @@
 	});
 
 	//step 3 (display new data)
+	var counter = 0;
 	socket.on('updatePage', function(result) {
 		console.log("updatingPage");
 		var obj = result.results;
 
 		$('#data_table').html('');
+
+		handshake_one = [];
+		handshake_two = [];
+		for(var i=0; i<3; i++) {
+			handshake_one[i] = [];
+			handshake_two[i] = [];
+		}
+		handshake_one[0][0] = 'x';
+		handshake_one[1][0] = 'y';
+		handshake_one[2][0] = 'z';
+		handshake_two[0][0] = 'x';
+		handshake_two[1][0] = 'y';
+		handshake_two[2][0] = 'z';
 
 		for (var key in obj) {
 			$('#data_table').append('<tr>');
@@ -22,7 +44,58 @@
 			    if (obj[key].hasOwnProperty(property)) {
 			    	//access stuff using obj[key])[property]
 			        $('#data_table').append('<td>' + (obj[key])[property] + '</td>');
+			        	//handshake match
+			        	if(counter == 1) handshake_match = (obj[key])[property];
+			        	//userID
+			        	else if(counter == 3) userID_one = (obj[key])[property];
+			        	//x
+			        	else if(counter == 4) handshake_one[0][1] = (obj[key])[property];
+			        	else if(counter == 5) handshake_one[0][10] = (obj[key])[property];
+			        	else if(counter == 6) handshake_one[0][11] = (obj[key])[property];
+			        	else if(counter == 7) handshake_one[0][12] = (obj[key])[property];
+			        	else if(counter == 8) handshake_one[0][13] = (obj[key])[property];
+			  			else if(counter == 9) handshake_one[0][14] = (obj[key])[property];
+			        	else if(counter == 10) handshake_one[0][2] = (obj[key])[property];
+			        	else if(counter == 11) handshake_one[0][3] = (obj[key])[property];
+			        	else if(counter == 12) handshake_one[0][4] = (obj[key])[property];
+			        	else if(counter == 13) handshake_one[0][5] = (obj[key])[property];
+			        	else if(counter == 14) handshake_one[0][6] = (obj[key])[property];
+			        	else if(counter == 15) handshake_one[0][7] = (obj[key])[property];
+			        	else if(counter == 16) handshake_one[0][8] = (obj[key])[property];
+			        	else if(counter == 17) handshake_one[0][9] = (obj[key])[property];
+			        	//y
+			        	else if(counter == 18) handshake_one[1][1] = (obj[key])[property];
+			        	else if(counter == 19) handshake_one[1][10] = (obj[key])[property];
+			        	else if(counter == 20) handshake_one[1][11] = (obj[key])[property];
+			        	else if(counter == 21) handshake_one[1][12] = (obj[key])[property];
+			        	else if(counter == 22) handshake_one[1][13] = (obj[key])[property];
+			        	else if(counter == 23) handshake_one[1][14] = (obj[key])[property];
+			        	else if(counter == 24) handshake_one[1][2] = (obj[key])[property];
+			        	else if(counter == 25) handshake_one[1][3] = (obj[key])[property];
+			        	else if(counter == 26) handshake_one[1][4] = (obj[key])[property];
+			        	else if(counter == 27) handshake_one[1][5] = (obj[key])[property];
+			        	else if(counter == 28) handshake_one[1][6] = (obj[key])[property];
+			        	else if(counter == 29) handshake_one[1][7] = (obj[key])[property];
+			        	else if(counter == 30) handshake_one[1][8] = (obj[key])[property];
+			        	else if(counter == 31) handshake_one[1][9] = (obj[key])[property];
+			        	//z
+			        	else if(counter == 32) handshake_one[2][1] = (obj[key])[property];
+			        	else if(counter == 33) handshake_one[2][10] = (obj[key])[property];
+			        	else if(counter == 34) handshake_one[2][11] = (obj[key])[property];
+			        	else if(counter == 35) handshake_one[2][12] = (obj[key])[property];
+			        	else if(counter == 36) handshake_one[2][13] = (obj[key])[property];
+			        	else if(counter == 37) handshake_one[2][14] = (obj[key])[property];
+			        	else if(counter == 38) handshake_one[2][2] = (obj[key])[property];
+			        	else if(counter == 39) handshake_one[2][3] = (obj[key])[property];
+			        	else if(counter == 40) handshake_one[2][4] = (obj[key])[property];
+			        	else if(counter == 41) handshake_one[2][5] = (obj[key])[property];
+			        	else if(counter == 42) handshake_one[2][6] = (obj[key])[property];
+			        	else if(counter == 43) handshake_one[2][7] = (obj[key])[property];
+			        	else if(counter == 44) handshake_one[2][8] = (obj[key])[property];
+			        	else if(counter == 45) handshake_one[2][9] = (obj[key])[property];
+			        	else ;
 			    }
+			   	counter++;
 			}
 			$('#data_table').append('</tr>');
 		}

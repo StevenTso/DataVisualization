@@ -84,7 +84,7 @@ var handshake_two;
 var userID_one;
 var userID_two;
 var handshake_match;
-
+var svg;
 
 var socket = io.connect();
 
@@ -92,6 +92,15 @@ var socket = io.connect();
 	socket.on('connect', function() {
 		console.log('connected');
 		socket.emit('updateServer');
+
+		//Set background color
+    	d3.select("body").style("background-color", "white");//"olivedrab");
+
+    	//Add the <svg> to the body
+    	var svg = d3.select("#circle")
+        .append("svg")
+        .attr("width", "130px")
+        .attr("height","130px");
 	});
 
 	//step 3 (display new data)
@@ -289,14 +298,6 @@ var socket = io.connect();
 					fill = "red";
 				}
 
-				//Set background color
-	        	d3.select("body").style("background-color", "white");//"olivedrab");
-
-	        	//Add the <svg> to the body
-	        	var svg = d3.select("#circle")
-	            .append("svg")
-	            .attr("width", "130px")
-	            .attr("height","130px");
 
 	            //Add circle to the svg and load the true/false data
 	            var circles = svg.selectAll("circle")

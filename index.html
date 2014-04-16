@@ -97,7 +97,7 @@ var socket = io.connect();
     	d3.select("body").style("background-color", "white");//"olivedrab");
 
     	//Add the <svg> to the body
-    	var svg = d3.select("#circle")
+    	svg = d3.select("#circle")
         .append("svg")
         .attr("width", "130px")
         .attr("height","130px");

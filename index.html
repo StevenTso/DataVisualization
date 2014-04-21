@@ -112,6 +112,7 @@ var socket = io.connect();
 		var obj = result.results;
 
 		//$('#data_table').html('');
+		handshake_match_temp = false;
 		handshake_match = [];
 		handshake_one = [];
 		handshake_two = [];
@@ -134,7 +135,8 @@ var socket = io.connect();
 			    	//access stuff using obj[key])[property]
 			        //$('#data_table').append('<td>' + (obj[key])[property] + '</td>');
 			        	//handshake match
-			        	if(elementCnt == 1) handshake_match.push((obj[key])[property]);
+			        	if(elementCnt == 1) handshake_match_temp = (obj[key])[property]; 
+			        	//handshake_match.push((obj[key])[property]);
 			        	//userID
 			        	else if(elementCnt == 4) userID_one = (obj[key])[property];
 			        	//x
@@ -194,9 +196,9 @@ var socket = io.connect();
 			    	//access stuff using obj[key])[property]
 			        //$('#data_table').append('<td>' + (obj[key])[property] + '</td>');
 			        	//handshake match
-			        	//if(elementCnt == 1) handshake_match = (obj[key])[property];
+			        	if(elementCnt == 1) handshake_match.push(handshake_match_temp || (obj[key])[property]);
 			        	//userID
-			        	if(elementCnt == 4) userID_two = (obj[key])[property];
+			        	else if(elementCnt == 4) userID_two = (obj[key])[property];
 			        	//x
 			        	else if(elementCnt == 5) handshake_two[0][1] = (obj[key])[property];
 			        	else if(elementCnt == 6) handshake_two[0][10] = (obj[key])[property];

@@ -87,6 +87,7 @@
 			var handshake_match_temp;
 			var svg;
 			var circles;
+			var fill;
 
 			var socket = io.connect();
 
@@ -298,7 +299,7 @@
 							var circle_stroke = "rgba(0, 255, 0, 0.25)";
 							var circle_stroke_width = "10";
 							var opacity = "0.5";
-							var fill;
+
 							console.log(handshake_match);
 							if(handshake_match[0] == true){
 								fill = "green";
@@ -307,12 +308,14 @@
 								fill = "red";
 							}
 
+							svg.selectAll("circle").remove();
 
 				            //Add circle to the svg and load the true/false data
 				            circles = svg.selectAll("circle")
 				                 .data(handshake_match)
 				                 .enter()
-				                 .append("circle");
+				                 .append("circle")
+						       	 .attr("fill", fill);
 
 				            //Set properties of the circle
 				            circles.attr("cy", "50%")

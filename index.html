@@ -96,6 +96,8 @@
 					console.log('connected');
 					socket.emit('updateServer');
 
+					d3.selectAll("svg").remove();
+
 					//Set background color
 			    	d3.select("body").style("background-color", "white");//"olivedrab");
 
